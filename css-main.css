@@ -1,0 +1,134 @@
+body {
+    font-family: Roboto;
+    font-size: 14px;
+    color: #424242;
+}
+/*header css taken from here: https://stackoverflow.com/questions/11701311/logo-image-and-h1-heading-on-the-same-line*/
+
+header img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: #555;
+}
+header h1,
+header h3 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+    margin: 3px 0px 3px 0px;
+}
+/*
+Grid templates taken from here: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas
+*/
+
+.main-head {
+    grid-area: header;
+}
+.content {
+    grid-area: content;
+    display: grid;
+    grid-row-gap: 1px;
+    grid-template-areas: "overview overview overview" "project1 project1 project1" "project2 project2 project2" "project3 project3 project3"
+}
+img {
+    height: 200px;
+    max-width: 100%;
+}
+.project-overview {
+    grid-area: project-overview;
+}
+.project1 {
+    grid-area: project1;
+}
+.project2 {
+    grid-area: project2;
+}
+.project3 {
+    grid-area: project3;
+}
+.text {
+    grid-area: text;
+}
+.img {
+    grid-area: img;
+}
+.main-nav {
+    grid-area: nav;
+}
+/*navbar css taken from here: https://www.w3schools.com/css/css_navbar.asp*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+/* Change the link color on hover */
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+.main-nav ul {
+    list-style: none;
+}
+.main-footer {
+    grid-area: footer;
+}
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "header" "nav" "content" "footer";
+}
+.wrapper > * {
+    padding: 1em;
+}
+@media (min-width: 500px) {
+    article img {
+        height: 200px;
+        max-width: 100%;
+    }
+    article {
+        border-bottom: solid thin gray;
+        margin-bottom: 10px;
+    }
+    .wrapper {
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas: "header  header" "nav     nav" "content content" "footer  footer";
+    }
+    .content {
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-areas: "overview" "project1" "project2" "project3"
+    }
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 700px) {
+    article img {
+        height: 200px;
+        max-width: 100%;
+    }
+    .wrapper {
+        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-areas: ". header  header" "nav    content content" "footer footer  footer"
+    }
+    .content {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 1px;
+        grid-template-areas: "overview overview overview" "project1 project2 project3"
+    }
+    nav ul {
+        flex-direction: column;
+    }
+}
